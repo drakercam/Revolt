@@ -4,6 +4,7 @@ Names: Cameron Drake & Emily Amos
 Course: COMP4501A
 Engine: Godot 4.6
 
+PLAYER THE GAME HERE: https://draker-gamedev.itch.io/revolt
 
 CONTROLS
 ----------------------
