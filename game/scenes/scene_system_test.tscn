@@ -1,0 +1,111 @@
+[gd_scene format=3 uid="uid://biujsah180aa5"]
+
+[ext_resource type="Script" uid="uid://r1cq0h8lbarn" path="res://game/scripts/scene_system_test.gd" id="1_7efua"]
+[ext_resource type="PackedScene" uid="uid://cbot137e8yxxt" path="res://entities/scenes/landscape.tscn" id="2_oip8v"]
+[ext_resource type="Script" uid="uid://do1cp3f2wwwuh" path="res://game/scripts/camera_3d.gd" id="3_oip8v"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_oip8v"]
+sky_top_color = Color(0.10667995, 0.51637405, 0.47070253, 1)
+sky_horizon_color = Color(0.8797945, 0.47894257, 0.87431306, 1)
+sky_curve = 0.08038309
+ground_bottom_color = Color(3.760215e-08, 0.13341504, 0.028159425, 1)
+sun_curve = 0.109806456
+
+[sub_resource type="Sky" id="Sky_h2lvl"]
+sky_material = SubResource("ProceduralSkyMaterial_oip8v")
+
+[sub_resource type="Environment" id="Environment_wyxql"]
+background_mode = 2
+sky = SubResource("Sky_h2lvl")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_7tvjj"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wbphy"]
+albedo_color = Color(0.9095736, 0.6125269, 0.42921332, 1)
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_oip8v"]
+vertices = PackedVector3Array(-9.5, 0.5, -9.5, -9.5, 0.5, 9.5, 9.5, 0.5, 9.5, 9.5, 0.5, -9.5)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wyxql"]
+size = Vector3(1, 0.05029297, 1)
+
+[node name="SceneSystemTest" type="Node3D" unique_id=2079442402]
+script = ExtResource("1_7efua")
+
+[node name="Skybox" type="WorldEnvironment" parent="." unique_id=300639269]
+environment = SubResource("Environment_wyxql")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=965568265]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
+visible = false
+mesh = SubResource("PlaneMesh_7tvjj")
+surface_material_override/0 = SubResource("StandardMaterial3D_wbphy")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1579939409]
+transform = Transform3D(0.70648944, -0.3233342, 0.6295456, 0, 0.889536, 0.45686507, -0.7077236, -0.32277036, 0.62844783, 7.5549636, 6.032444, 8.222866)
+shadow_enabled = true
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1962236071]
+transform = Transform3D(0.70710677, -0.45451945, 0.5416752, 0, 0.76604444, 0.6427876, -0.70710677, -0.45451945, 0.5416752, 0.6, 2.6, 3)
+script = ExtResource("3_oip8v")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Camera3D" unique_id=1144741684]
+
+[node name="Label" type="Label" parent="Camera3D/CanvasLayer" unique_id=282107245]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -270.0
+offset_right = 270.0
+offset_bottom = 23.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 12
+text = "DEBUG: wasd for camera movement, up/down arrows for scrolling, left-click for interactions"
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=1366294462]
+navigation_mesh = SubResource("NavigationMesh_oip8v")
+
+[node name="Landscape" parent="NavigationRegion3D" unique_id=789043097 instance=ExtResource("2_oip8v")]
+transform = Transform3D(10, 0, 0, 0, 1, 0, 0, 0, 10, -5, 0, -5)
+size_x = 6
+size_y = 8
+
+[node name="Landscape2" parent="NavigationRegion3D" unique_id=1571741214 instance=ExtResource("2_oip8v")]
+transform = Transform3D(10, 0, 0, 0, 1, 0, 0, 0, 10, 5, 0, -5)
+size_x = 6
+size_y = 8
+
+[node name="Landscape3" parent="NavigationRegion3D" unique_id=233419138 instance=ExtResource("2_oip8v")]
+transform = Transform3D(10, 0, 0, 0, 1, 0, 0, 0, 10, -5, 0, 5)
+size_x = 6
+size_y = 8
+
+[node name="Landscape4" parent="NavigationRegion3D" unique_id=1163664419 instance=ExtResource("2_oip8v")]
+transform = Transform3D(10, 0, 0, 0, 1, 0, 0, 0, 10, 5, 0, 5)
+size_x = 6
+size_y = 8
+
+[node name="District1" type="Area3D" parent="." unique_id=1754924951]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="District1" unique_id=1029452965]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -5, -0.03173828, -5)
+shape = SubResource("BoxShape3D_wyxql")
+
+[node name="District2" type="Area3D" parent="." unique_id=449410549]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="District2" unique_id=2070512989]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 5, -0.032, -5)
+shape = SubResource("BoxShape3D_wyxql")
+
+[node name="District3" type="Area3D" parent="." unique_id=869103689]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="District3" unique_id=274478048]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -5, -0.032, 5)
+shape = SubResource("BoxShape3D_wyxql")
+
+[node name="District4" type="Area3D" parent="." unique_id=1147488984]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="District4" unique_id=1727379546]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 5, -0.032, 5)
+shape = SubResource("BoxShape3D_wyxql")

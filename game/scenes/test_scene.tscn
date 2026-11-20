@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://blommdaiioxr"]
+
+[ext_resource type="Script" uid="uid://day52gaey8lho" path="res://game/scripts/test_scene.gd" id="1_g7g4h"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_g7g4h"]
+radius = 0.6661653
+
+[sub_resource type="BoxMesh" id="BoxMesh_a5oyu"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g7g4h"]
+albedo_color = Color(0.87775314, 0.0006428343, 0.8828886, 1)
+metallic = 0.44
+metallic_specular = 0.61
+
+[node name="TestScene" type="Node3D" unique_id=1918926957]
+script = ExtResource("1_g7g4h")
+
+[node name="testcube" type="StaticBody3D" parent="." unique_id=2048180230]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="testcube" unique_id=696827559]
+shape = SubResource("SphereShape3D_g7g4h")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="testcube" unique_id=894799499]
+mesh = SubResource("BoxMesh_a5oyu")
+surface_material_override/0 = SubResource("StandardMaterial3D_g7g4h")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1366266011]
+
+[node name="PopupMenu" type="PopupMenu" parent="CanvasLayer" unique_id=914761534]
+oversampling_override = 1.0
+hide_on_item_selection = false
+hide_on_checkable_item_selection = false
+shrink_height = false
+shrink_width = false
+item_count = 2
+item_0/text = "Option 1"
+item_0/id = 0
+item_1/text = "Option 2"
+item_1/id = 1
+
+[connection signal="input_event" from="testcube" to="." method="_on_testcube_input_event"]
+[connection signal="id_pressed" from="CanvasLayer/PopupMenu" to="." method="_on_popup_menu_id_pressed"]

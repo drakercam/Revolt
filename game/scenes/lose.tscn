@@ -1,0 +1,62 @@
+[gd_scene format=3 uid="uid://b3b0qfd3iv117"]
+
+[ext_resource type="Texture2D" uid="uid://81a6dgp1s8oi" path="res://game/textures/pixil-frame-0 (2).png" id="1_chbfd"]
+[ext_resource type="Script" uid="uid://dmmyqwu3c04l5" path="res://game/scripts/lose.gd" id="1_miulq"]
+[ext_resource type="FontFile" uid="uid://ctnq3byjs61ix" path="res://game/textures/PublicPixel.woff" id="3_ybptc"]
+
+[node name="Lose" type="Control" unique_id=1782250624]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_miulq")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=918796331]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_chbfd")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=290168097]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.69200003
+anchor_right = 0.5
+anchor_bottom = 0.69200003
+offset_left = -109.0
+offset_top = -76.36005
+offset_right = 109.0
+offset_bottom = 87.63995
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=815138912]
+layout_mode = 2
+
+[node name="RestartBtn" type="Button" parent="MarginContainer/VBoxContainer" unique_id=1715870933]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.901971, 0.8683458, 0.7187729, 1)
+theme_override_fonts/font = ExtResource("3_ybptc")
+theme_override_font_sizes/font_size = 40
+text = "Restart"
+
+[node name="MenuBtn" type="Button" parent="MarginContainer/VBoxContainer" unique_id=1175488460]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.901971, 0.8683458, 0.7187729, 1)
+theme_override_fonts/font = ExtResource("3_ybptc")
+theme_override_font_sizes/font_size = 40
+text = "Menu"
+
+[node name="QuitBtn" type="Button" parent="MarginContainer/VBoxContainer" unique_id=1567251053]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.901971, 0.8683458, 0.7187729, 1)
+theme_override_fonts/font = ExtResource("3_ybptc")
+theme_override_font_sizes/font_size = 40
+text = "Quit"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/RestartBtn" to="." method="_on_restart_btn_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/MenuBtn" to="." method="_on_menu_btn_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/QuitBtn" to="." method="_on_quit_btn_pressed"]

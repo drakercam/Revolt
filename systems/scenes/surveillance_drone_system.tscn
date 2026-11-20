@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://dhfxmwmux5o6f"]
+
+[ext_resource type="Script" uid="uid://xo8p2ht0clra" path="res://systems/scripts/surveillance_drone_system.gd" id="1_70vui"]
+
+[node name="SurveillanceDroneSystem" type="Node" unique_id=1196983269]
+script = ExtResource("1_70vui")

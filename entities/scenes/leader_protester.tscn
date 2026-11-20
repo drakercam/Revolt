@@ -1,0 +1,135 @@
+[gd_scene format=3 uid="uid://dvhahkxe6ljdp"]
+
+[ext_resource type="Script" uid="uid://bdeuy5p76y61l" path="res://entities/scripts/leader_protester.gd" id="1_e2gmp"]
+[ext_resource type="PackedScene" uid="uid://cr7n3882w5p70" path="res://entities/animatedmodels/leader_protester (1).gltf" id="2_2ihk7"]
+[ext_resource type="Animation" uid="uid://byuelfo8l50sw" path="res://entities/animations/move.res" id="3_0cw60"]
+[ext_resource type="Animation" uid="uid://h5vpegmkbdu6" path="res://entities/animations/arrested.res" id="3_o5lsf"]
+[ext_resource type="ArrayMesh" uid="uid://ddhxr2v3fpi2" path="res://entities/models/target.obj" id="3_ppcct"]
+[ext_resource type="Animation" uid="uid://b5vl75dt6ylei" path="res://entities/animations/inspiring.res" id="4_0t28v"]
+[ext_resource type="FontFile" uid="uid://ctnq3byjs61ix" path="res://game/textures/PublicPixel.woff" id="6_o5lsf"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_qswpw"]
+radius = 0.17480469
+height = 0.8005371
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_s2xpt"]
+_data = {
+&"arrested": ExtResource("3_o5lsf"),
+&"inspiring": ExtResource("4_0t28v"),
+&"move": ExtResource("3_0cw60")
+}
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0cw60"]
+albedo_color = Color(0.77267164, 0.05890934, 9.62615e-08, 1)
+
+[node name="LeaderProtester" type="Node3D" unique_id=670673314]
+script = ExtResource("1_e2gmp")
+
+[node name="RigidBody3D" type="RigidBody3D" parent="." unique_id=698811804 groups=["leader"]]
+gravity_scale = 0.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D" unique_id=1250443395]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.42443848, 0)
+shape = SubResource("CapsuleShape3D_qswpw")
+
+[node name="Model_Mesh" parent="RigidBody3D" unique_id=697321496 instance=ExtResource("2_2ihk7")]
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="RigidBody3D/Model_Mesh" unique_id=1450056965]
+libraries/leader = SubResource("AnimationLibrary_s2xpt")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=361326935]
+
+[node name="PopupMenu" type="PopupMenu" parent="CanvasLayer" unique_id=2100277995]
+oversampling_override = 1.0
+theme_override_fonts/font = ExtResource("6_o5lsf")
+hide_on_item_selection = false
+hide_on_checkable_item_selection = false
+allow_search = false
+item_count = 2
+item_0/text = "Move Leader"
+item_0/id = 4
+item_1/text = "Handle Protest"
+item_1/id = 5
+
+[node name="ProtestMenu" type="PopupMenu" parent="CanvasLayer" unique_id=945301803]
+oversampling_override = 1.0
+theme_override_fonts/font = ExtResource("6_o5lsf")
+hide_on_item_selection = false
+hide_on_checkable_item_selection = false
+allow_search = false
+item_count = 4
+item_0/text = "Start Protest"
+item_0/id = 1
+item_1/text = "Inspire Crowd"
+item_1/id = 0
+item_2/text = "Destroy Structures"
+item_2/id = 3
+item_3/text = "Disperse Units"
+item_3/id = 2
+
+[node name="MoveMenu" type="PopupMenu" parent="CanvasLayer" unique_id=1098580664]
+oversampling_override = 1.0
+theme_override_fonts/font = ExtResource("6_o5lsf")
+hide_on_item_selection = false
+hide_on_checkable_item_selection = false
+allow_search = false
+item_count = 2
+item_0/text = "Cancel Movement"
+item_0/id = 0
+item_1/text = "Close Movement Screen"
+item_1/id = 1
+
+[node name="Note" type="Node3D" parent="CanvasLayer" unique_id=1100559880]
+
+[node name="NotePt1" type="ColorRect" parent="CanvasLayer/Note" unique_id=2118949750]
+visible = false
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 12.0
+offset_top = -321.0
+offset_right = 378.0
+offset_bottom = -301.0
+grow_vertical = 2
+color = Color(0.26812342, 0, 0.008128586, 1)
+
+[node name="NotePt2" type="Label" parent="CanvasLayer/Note" unique_id=2135009840]
+visible = false
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 14.0
+offset_top = -319.0
+offset_right = 335.0
+offset_bottom = -302.0
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_o5lsf")
+theme_override_font_sizes/font_size = 14
+text = "Please Start Protest First"
+
+[node name="TargetPosition" type="MeshInstance3D" parent="." unique_id=1933342771]
+visible = false
+material_override = SubResource("StandardMaterial3D_0cw60")
+mesh = ExtResource("3_ppcct")
+
+[node name="Timers" type="Node3D" parent="." unique_id=1608104120]
+
+[node name="PowerupTimer" type="Timer" parent="Timers" unique_id=431963599]
+one_shot = true
+
+[node name="AnimationTimer" type="Timer" parent="Timers" unique_id=1184393524]
+one_shot = true
+
+[node name="NoteTimer" type="Timer" parent="Timers" unique_id=1364521639]
+one_shot = true
+
+[connection signal="input_event" from="RigidBody3D" to="." method="_on_static_body_3d_input_event"]
+[connection signal="id_pressed" from="CanvasLayer/PopupMenu" to="." method="_on_popup_menu_id_pressed"]
+[connection signal="id_pressed" from="CanvasLayer/ProtestMenu" to="." method="_on_protest_menu_id_pressed"]
+[connection signal="id_pressed" from="CanvasLayer/MoveMenu" to="." method="_on_move_menu_id_pressed"]
+[connection signal="popup_hide" from="CanvasLayer/MoveMenu" to="." method="_on_move_menu_popup_hide"]
+[connection signal="timeout" from="Timers/PowerupTimer" to="." method="_on_powerup_timer_timeout"]
+[connection signal="timeout" from="Timers/AnimationTimer" to="." method="_on_animation_timer_timeout"]
+[connection signal="timeout" from="Timers/NoteTimer" to="." method="_on_note_timer_timeout"]

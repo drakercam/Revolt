@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://d0pky4jdqey3a"]
+
+[ext_resource type="PackedScene" uid="uid://cg0ketymvxpir" path="res://entities/models/ink.gltf" id="1_30adp"]
+[ext_resource type="Script" uid="uid://tiq7u4wg307t" path="res://entities/scripts/ink_collectible.gd" id="1_aixyi"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_aixyi"]
+size = Vector3(0.15533447, 0.16152018, 0.12896729)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_h2jdt"]
+height = 1.4286804
+radius = 1.0102539
+
+[node name="InkCollectible" type="Node3D" unique_id=884308197]
+script = ExtResource("1_aixyi")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1283216162 groups=["ink"]]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1500447205]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00015258789, 0.083288044, 0.000579834)
+shape = SubResource("BoxShape3D_aixyi")
+
+[node name="Model_Mesh" parent="StaticBody3D" unique_id=268877205 instance=ExtResource("1_30adp")]
+
+[node name="Area3D" type="Area3D" parent="." unique_id=818424643]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=823816679]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7436981, 0)
+shape = SubResource("CylinderShape3D_h2jdt")
+
+[node name="Timer" type="Timer" parent="." unique_id=820763129]
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

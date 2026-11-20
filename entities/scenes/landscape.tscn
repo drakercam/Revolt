@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://cbot137e8yxxt"]
+
+[ext_resource type="PackedScene" uid="uid://blwnbelooxc72" path="res://entities/models/landscape.glb" id="1_ck0jl"]
+[ext_resource type="Script" uid="uid://ns6jux8bess1" path="res://entities/scripts/landscape.gd" id="1_qxk8p"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qxk8p"]
+size = Vector3(1.0003586, 0.077886716, 0.9828491)
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_qxk8p"]
+sky_top_color = Color(0.10667995, 0.51637405, 0.47070253, 1)
+sky_horizon_color = Color(0.8797945, 0.47894257, 0.87431306, 1)
+sky_curve = 0.08038309
+ground_bottom_color = Color(3.760215e-08, 0.13341504, 0.028159425, 1)
+sun_curve = 0.109806456
+
+[sub_resource type="Sky" id="Sky_qxk8p"]
+sky_material = SubResource("ProceduralSkyMaterial_qxk8p")
+
+[sub_resource type="Environment" id="Environment_yanyx"]
+background_mode = 2
+sky = SubResource("Sky_qxk8p")
+
+[node name="Landscape" type="Node3D" unique_id=789043097]
+script = ExtResource("1_qxk8p")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=2090656822]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=146891447]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0049552917, 0.041123517, 0.015045166)
+shape = SubResource("BoxShape3D_qxk8p")
+
+[node name="tile" parent="StaticBody3D" unique_id=238537808 instance=ExtResource("1_ck0jl")]
+
+[node name="Skybox" type="WorldEnvironment" parent="." unique_id=691996138]
+environment = SubResource("Environment_yanyx")

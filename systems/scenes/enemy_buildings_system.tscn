@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://cv5rhe4twsa1b"]
+
+[ext_resource type="Script" uid="uid://gop3pqliaxo" path="res://systems/scripts/enemy_buildings_system.gd" id="1_s2xkl"]
+
+[node name="EnemyBuildingsSystem" type="Node" unique_id=1251980401]
+script = ExtResource("1_s2xkl")

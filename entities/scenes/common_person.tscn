@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://dql4q5wmbgbhk"]
+
+[ext_resource type="Script" uid="uid://tubnbs6g8s2d" path="res://entities/scripts/common_person.gd" id="1_pjaqd"]
+[ext_resource type="PackedScene" uid="uid://trt70aoi2ax6" path="res://entities/animatedmodels/person.gltf" id="2_pjaqd"]
+[ext_resource type="Animation" uid="uid://c6w76q5iha3y2" path="res://entities/animations/move_commoner.res" id="3_a53fx"]
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qcsyc"]
+_data = {
+&"move_commoner": ExtResource("3_a53fx")
+}
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_pjaqd"]
+viewport_path = NodePath("Sprite3D/SubViewport")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pjaqd"]
+bg_color = Color(0.47007585, 0.47007585, 0.47007585, 0.5019608)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a53fx"]
+resource_local_to_scene = true
+
+[node name="CommonPerson" type="Node3D" unique_id=1987110769 groups=["commoner"]]
+script = ExtResource("1_pjaqd")
+
+[node name="Model_Mesh" parent="." unique_id=2079527104 instance=ExtResource("2_pjaqd")]
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="Model_Mesh" unique_id=1719137151]
+libraries/person = SubResource("AnimationLibrary_qcsyc")
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=1442771742]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0062847566, 0.8256538, 0.002837181)
+billboard = 1
+texture = SubResource("ViewportTexture_pjaqd")
+
+[node name="SubViewport" type="SubViewport" parent="Sprite3D" unique_id=1426222809]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(256, 256)
+render_target_update_mode = 4
+
+[node name="ProgressBar" type="ProgressBar" parent="Sprite3D/SubViewport" unique_id=523067239]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -30.0
+offset_top = -4.0
+offset_right = 30.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_pjaqd")
+theme_override_styles/fill = SubResource("StyleBoxFlat_a53fx")
+value = 50.0
+show_percentage = false

@@ -1,0 +1,201 @@
+[gd_scene format=3 uid="uid://4k6jcuqrsypq"]
+
+[ext_resource type="Texture2D" uid="uid://dqhq0dalj1gje" path="res://game/textures/pixil-frame-0 (1).png" id="1_brc76"]
+[ext_resource type="Script" uid="uid://c65vmi6c3p05l" path="res://game/scripts/controls.gd" id="1_gr027"]
+[ext_resource type="FontFile" uid="uid://ctnq3byjs61ix" path="res://game/textures/PublicPixel.woff" id="4_6joac"]
+
+[node name="Controls" type="Control" unique_id=864267776]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_gr027")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1221969707]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_brc76")
+
+[node name="ResetBtn" type="Button" parent="." unique_id=1681953345]
+layout_mode = 0
+offset_left = 772.0
+offset_top = 744.0
+offset_right = 1148.0
+offset_bottom = 775.0
+theme_override_fonts/font = ExtResource("4_6joac")
+theme_override_font_sizes/font_size = 23
+text = "Reset to Default"
+
+[node name="BackBtn" type="Button" parent="." unique_id=634199330]
+layout_mode = 0
+offset_left = 153.0
+offset_top = 139.0
+offset_right = 287.0
+offset_bottom = 205.0
+theme_override_fonts/font = ExtResource("4_6joac")
+theme_override_font_sizes/font_size = 28
+text = "Back"
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1738155175]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.39100003
+anchor_top = 0.41900003
+anchor_right = 0.39100003
+anchor_bottom = 0.47100002
+offset_left = -0.7200928
+offset_top = -108.52002
+offset_right = 0.27990723
+offset_bottom = 113.31998
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=90324689]
+layout_mode = 2
+theme_override_constants/separation = 11
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1649073321]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.8089983, 0.8089983, 0.8089982, 1)
+theme_override_fonts/font = ExtResource("4_6joac")
+theme_override_font_sizes/font_size = 26
+text = "Interact"
+
+[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer" unique_id=2020225391]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.8089983, 0.8089983, 0.8089982, 1)
+theme_override_fonts/font = ExtResource("4_6joac")
+theme_override_font_sizes/font_size = 26
+
+[node name="Label3" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1423815565]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.8089983, 0.8089983, 0.8089982, 1)
+theme_override_fonts/font = ExtResource("4_6joac")
+theme_override_font_sizes/font_size = 26
+
+[node name="Label4" type="Label" parent="MarginContainer/VBoxContainer" unique_id=2088952229]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.8089983, 0.8089983, 0.8089982, 1)
+theme_override_fonts/font = ExtResource("4_6joac")
+theme_override_font_sizes/font_size = 26
+
+[node name="Label5" type="Label" parent="MarginContainer/VBoxContainer" unique_id=133549843]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.8089983, 0.8089983, 0.8089982, 1)
+theme_override_fonts/font = ExtResource("4_6joac")
+theme_override_font_sizes/font_size = 26
+
+[node name="Label6" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1106940769]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.8089983, 0.8089983, 0.8089982, 1)
+theme_override_fonts/font = ExtResource("4_6joac")
+theme_override_font_sizes/font_size = 26
+
+[node name="Label7" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1143550396]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.8089983, 0.8089983, 0.8089982, 1)
+theme_override_fonts/font = ExtResource("4_6joac")
+theme_override_font_sizes/font_size = 26
+
+[node name="Label8" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1049042151]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.8089983, 0.8089983, 0.8089982, 1)
+theme_override_fonts/font = ExtResource("4_6joac")
+theme_override_font_sizes/font_size = 26
+
+[node name="Label9" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1913244935]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.8089983, 0.8089983, 0.8089982, 1)
+theme_override_fonts/font = ExtResource("4_6joac")
+theme_override_font_sizes/font_size = 26
+
+[node name="Label10" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1289680007]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.8089983, 0.8089983, 0.8089982, 1)
+theme_override_fonts/font = ExtResource("4_6joac")
+theme_override_font_sizes/font_size = 26
+
+[node name="MarginContainer2" type="MarginContainer" parent="." unique_id=655342322]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.625
+anchor_top = 0.39200002
+anchor_right = 0.646
+anchor_bottom = 0.43400002
+offset_top = 16.639984
+offset_right = -0.32006836
+offset_bottom = 63.27997
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer2" unique_id=212353640]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer2/VBoxContainer" unique_id=605654410]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.719024, 0.6279394, 0.5479489, 1)
+theme_override_fonts/font = ExtResource("4_6joac")
+theme_override_font_sizes/font_size = 26
+text = "Left Mouse Button"
+horizontal_alignment = 1
+
+[node name="Button2" type="Button" parent="MarginContainer2/VBoxContainer" unique_id=228616940]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.719024, 0.6279394, 0.5479489, 1)
+theme_override_fonts/font = ExtResource("4_6joac")
+theme_override_font_sizes/font_size = 26
+
+[node name="Button3" type="Button" parent="MarginContainer2/VBoxContainer" unique_id=612669373]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.719024, 0.6279394, 0.5479489, 1)
+theme_override_fonts/font = ExtResource("4_6joac")
+theme_override_font_sizes/font_size = 26
+
+[node name="Button4" type="Button" parent="MarginContainer2/VBoxContainer" unique_id=840188393]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.719024, 0.6279394, 0.5479489, 1)
+theme_override_fonts/font = ExtResource("4_6joac")
+theme_override_font_sizes/font_size = 26
+
+[node name="Button5" type="Button" parent="MarginContainer2/VBoxContainer" unique_id=285472801]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.719024, 0.6279394, 0.5479489, 1)
+theme_override_fonts/font = ExtResource("4_6joac")
+theme_override_font_sizes/font_size = 26
+
+[node name="Button6" type="Button" parent="MarginContainer2/VBoxContainer" unique_id=2120736608]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.719024, 0.6279394, 0.5479489, 1)
+theme_override_fonts/font = ExtResource("4_6joac")
+theme_override_font_sizes/font_size = 26
+
+[node name="Button7" type="Button" parent="MarginContainer2/VBoxContainer" unique_id=90074078]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.719024, 0.6279394, 0.5479489, 1)
+theme_override_fonts/font = ExtResource("4_6joac")
+theme_override_font_sizes/font_size = 26
+
+[node name="Button8" type="Button" parent="MarginContainer2/VBoxContainer" unique_id=294802542]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.719024, 0.6279394, 0.5479489, 1)
+theme_override_fonts/font = ExtResource("4_6joac")
+theme_override_font_sizes/font_size = 26
+
+[node name="Button9" type="Button" parent="MarginContainer2/VBoxContainer" unique_id=1102911639]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.719024, 0.6279394, 0.5479489, 1)
+theme_override_fonts/font = ExtResource("4_6joac")
+theme_override_font_sizes/font_size = 26
+
+[node name="Button10" type="Button" parent="MarginContainer2/VBoxContainer" unique_id=375658061]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.719024, 0.6279394, 0.5479489, 1)
+theme_override_fonts/font = ExtResource("4_6joac")
+theme_override_font_sizes/font_size = 26
+
+[connection signal="pressed" from="ResetBtn" to="." method="_on_reset_btn_pressed"]
+[connection signal="pressed" from="BackBtn" to="." method="_on_back_btn_pressed"]

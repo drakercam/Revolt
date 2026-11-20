@@ -1,0 +1,118 @@
+[gd_scene format=3 uid="uid://jkw2d3o76odn"]
+
+[ext_resource type="Script" uid="uid://bkeyk2ndd8abg" path="res://entities/scripts/revolution_base.gd" id="1_ibknt"]
+[ext_resource type="PackedScene" uid="uid://g2yg816db3g4" path="res://entities/models/revolution_base_revolt.glb" id="2_1m057"]
+[ext_resource type="FontFile" uid="uid://ctnq3byjs61ix" path="res://game/textures/PublicPixel.woff" id="3_xdaax"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1m057"]
+size = Vector3(1.0341797, 1.0167236, 1.232544)
+
+[node name="RevolutionBase" type="Node3D" unique_id=2092267929]
+script = ExtResource("1_ibknt")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1170230162 groups=["base"]]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=644461728]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.26596212, -0.009735107)
+shape = SubResource("BoxShape3D_1m057")
+
+[node name="Model_Mesh" parent="StaticBody3D" unique_id=536370355 instance=ExtResource("2_1m057")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1841683554]
+
+[node name="PopupMenu" type="PopupMenu" parent="CanvasLayer" unique_id=916319375]
+oversampling_override = 1.0
+size = Vector2i(192, 116)
+theme_override_fonts/font = ExtResource("3_xdaax")
+hide_on_item_selection = false
+hide_on_checkable_item_selection = false
+allow_search = false
+item_count = 4
+item_0/text = "Recruit"
+item_0/id = 0
+item_1/text = "Access Storage"
+item_1/id = 1
+item_2/text = "Heal Units"
+item_2/id = 2
+item_3/text = "Print Newspapers"
+item_3/id = 3
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=1017726105]
+offset_left = 1602.0
+offset_top = 21.0
+offset_right = 1901.0
+offset_bottom = 255.0
+color = Color(0.84313726, 0.14901961, 0, 0.4117647)
+
+[node name="Title" type="Label" parent="CanvasLayer/ColorRect" unique_id=1102136879]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 16.0
+offset_right = 289.0
+offset_bottom = 46.0
+theme_override_fonts/font = ExtResource("3_xdaax")
+theme_override_font_sizes/font_size = 14
+text = "Revolution Inventory"
+
+[node name="Label" type="Label" parent="CanvasLayer/ColorRect" unique_id=1270836907]
+layout_mode = 0
+offset_left = 161.0
+offset_top = 66.0
+offset_right = 241.0
+offset_bottom = 122.0
+theme_override_fonts/font = ExtResource("3_xdaax")
+text = "Paper
+  Ink
+ Wood"
+
+[node name="PaperLabel" type="Label" parent="CanvasLayer/ColorRect/Label" unique_id=1946036103]
+layout_mode = 0
+offset_left = -118.0
+offset_right = -78.0
+offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("3_xdaax")
+text = "0"
+
+[node name="InkLabel" type="Label" parent="CanvasLayer/ColorRect/Label" unique_id=526077365]
+layout_mode = 0
+offset_left = -118.0
+offset_top = 19.0
+offset_right = -78.0
+offset_bottom = 42.0
+theme_override_fonts/font = ExtResource("3_xdaax")
+text = "0"
+
+[node name="WoodLabel" type="Label" parent="CanvasLayer/ColorRect/Label" unique_id=1609631600]
+layout_mode = 0
+offset_left = -118.0
+offset_top = 38.0
+offset_right = -78.0
+offset_bottom = 61.0
+theme_override_fonts/font = ExtResource("3_xdaax")
+text = "0"
+
+[node name="CollectButton" type="Button" parent="CanvasLayer/ColorRect" unique_id=1255310617]
+layout_mode = 0
+offset_left = 27.0
+offset_top = 151.0
+offset_right = 273.0
+offset_bottom = 182.0
+theme_override_fonts/font = ExtResource("3_xdaax")
+theme_override_font_sizes/font_size = 14
+text = "Collect Materials"
+
+[node name="CloseButton" type="Button" parent="CanvasLayer/ColorRect" unique_id=451340147]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 194.0
+offset_right = 293.0
+offset_bottom = 225.0
+theme_override_fonts/font = ExtResource("3_xdaax")
+theme_override_font_sizes/font_size = 14
+text = "Close Inventory Menu"
+
+[connection signal="input_event" from="StaticBody3D" to="." method="_on_static_body_3d_input_event"]
+[connection signal="id_pressed" from="CanvasLayer/PopupMenu" to="." method="_on_popup_menu_id_pressed"]
+[connection signal="pressed" from="CanvasLayer/ColorRect/CollectButton" to="." method="_on_collect_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/ColorRect/CloseButton" to="." method="_on_close_button_pressed"]

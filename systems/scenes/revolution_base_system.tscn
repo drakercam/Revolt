@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://dw8tdkxldqtvi"]
+
+[ext_resource type="Script" uid="uid://dru6d5iof082p" path="res://systems/scripts/revolution_base_system.gd" id="1_e4gp4"]
+
+[node name="RevolutionBaseSystem" type="Node" unique_id=1921062759]
+script = ExtResource("1_e4gp4")

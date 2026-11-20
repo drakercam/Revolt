@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://ti4tkxbokydc"]
+
+[ext_resource type="Script" uid="uid://cf53it16i6q1i" path="res://entities/scripts/megaphone_powerup.gd" id="1_5jacq"]
+[ext_resource type="PackedScene" uid="uid://lfvfkwkhx8wj" path="res://entities/models/megaphone.gltf" id="1_goyjb"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5jacq"]
+size = Vector3(0.2581787, 0.3347168, 0.3458252)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_goyjb"]
+height = 0.5699997
+radius = 0.23632813
+
+[node name="MegaphonePowerup" type="Node3D" unique_id=518039460]
+script = ExtResource("1_5jacq")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=199546837 groups=["megaphone"]]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, -0.03910303)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1055617512]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0006713867, 0.27233887, 0.04083252)
+shape = SubResource("BoxShape3D_5jacq")
+
+[node name="Model_Mesh" parent="StaticBody3D" unique_id=2130582660 instance=ExtResource("1_goyjb")]
+
+[node name="Area3D" type="Area3D" parent="." unique_id=2068309495]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=278894029]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.31435776, 0)
+shape = SubResource("CylinderShape3D_goyjb")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

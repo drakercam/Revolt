@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://cnbyj1rnifrm8"]
+
+[ext_resource type="Script" uid="uid://dhpe35aerdxa5" path="res://entities/scripts/build_spot.gd" id="1_ejc3n"]
+[ext_resource type="FontFile" uid="uid://ctnq3byjs61ix" path="res://game/textures/PublicPixel.woff" id="2_dpxs5"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_dpxs5"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rrm6t"]
+albedo_color = Color(1, 1, 0, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dimiy"]
+size = Vector3(1, 0.16015625, 1)
+
+[node name="BuildSpot" type="Node3D" unique_id=1291844373]
+script = ExtResource("1_ejc3n")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=976304513]
+
+[node name="PopupMenu" type="PopupMenu" parent="CanvasLayer" unique_id=721209513]
+oversampling_override = 1.0
+title = "Build Options"
+position = Vector2i(20, 110)
+size = Vector2i(808, 200)
+theme_override_fonts/font = ExtResource("2_dpxs5")
+item_count = 2
+item_0/text = "Build Radio Tower     (20 paper, 3 ink, 20 wood)"
+item_0/id = 0
+item_1/text = "Build Revolution Base (30 paper, 8 ink, 30 wood)"
+item_1/id = 1
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/PopupMenu" unique_id=596644526]
+show_behind_parent = true
+offset_right = 808.0
+offset_bottom = 200.0
+color = Color(1, 1, 0, 0.21176471)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=830142171]
+transform = Transform3D(1, 0, 0, 0, 0.16558295, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("BoxMesh_dpxs5")
+surface_material_override/0 = SubResource("StandardMaterial3D_rrm6t")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=190975431 groups=["ui"]]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1322382123]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0009765625, 0)
+shape = SubResource("BoxShape3D_dimiy")
+
+[connection signal="id_pressed" from="CanvasLayer/PopupMenu" to="." method="_on_popup_menu_id_pressed"]
+[connection signal="input_event" from="StaticBody3D" to="." method="_on_static_body_3d_input_event"]

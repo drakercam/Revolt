@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://5lyq6813n8nq"]
+
+[ext_resource type="Script" uid="uid://dvn50ajdpv6iq" path="res://systems/scripts/common_person_system.gd" id="1_6irmj"]
+
+[node name="CommonPersonSystem" type="Node" unique_id=311585758]
+script = ExtResource("1_6irmj")

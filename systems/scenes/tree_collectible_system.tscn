@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://ce2bpomyocuo8"]
+
+[ext_resource type="Script" uid="uid://en686uxuewht" path="res://systems/scripts/tree_collectible_system.gd" id="1_560uf"]
+
+[node name="TreeCollectibleSystem" type="Node" unique_id=669316339]
+script = ExtResource("1_560uf")

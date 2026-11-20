@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://bb67pcf2gdnkj"]
+
+[ext_resource type="Script" uid="uid://db7uk557l30d3" path="res://entities/scripts/riot_police.gd" id="1_4ar3w"]
+[ext_resource type="PackedScene" uid="uid://b6s3b0p3msgki" path="res://entities/animatedmodels/riot_police (1).gltf" id="2_e0fio"]
+[ext_resource type="Animation" uid="uid://b27p5gj5ye18" path="res://entities/animations/move_police.res" id="3_7rd06"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_7rd06"]
+radius = 0.14550781
+height = 0.72400665
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gkqtm"]
+_data = {
+&"move_police": ExtResource("3_7rd06")
+}
+
+[node name="RiotPolice" type="Node3D" unique_id=1409196605 groups=["riot_police"]]
+script = ExtResource("1_4ar3w")
+
+[node name="RigidBody3D" type="RigidBody3D" parent="." unique_id=630976286]
+gravity_scale = 0.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D" unique_id=275691475]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.36452866, 0)
+shape = SubResource("CapsuleShape3D_7rd06")
+
+[node name="Model_Mesh" parent="RigidBody3D" unique_id=1698667791 instance=ExtResource("2_e0fio")]
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="RigidBody3D/Model_Mesh" unique_id=398840816]
+libraries/police = SubResource("AnimationLibrary_gkqtm")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=17753719]

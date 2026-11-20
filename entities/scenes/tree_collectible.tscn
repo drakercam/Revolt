@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://1ws47a5aoaic"]
+
+[ext_resource type="Script" uid="uid://c6h36dxkua0lt" path="res://entities/scripts/tree_collectible.gd" id="1_dj6d5"]
+[ext_resource type="PackedScene" uid="uid://cjq744ksqpsk8" path="res://entities/models/tree.gltf" id="2_yw1kr"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vge5b"]
+size = Vector3(0.25860596, 1.5396118, 0.24563599)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_yw1kr"]
+height = 1.4286804
+radius = 1.0102539
+
+[node name="TreeCollectible" type="Node3D" unique_id=435326357]
+script = ExtResource("1_dj6d5")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1492760788 groups=["tree"]]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=689280368]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.009002686, 0.7698648, -0.000289917)
+shape = SubResource("BoxShape3D_vge5b")
+
+[node name="Model_Mesh" parent="StaticBody3D" unique_id=37971125 instance=ExtResource("2_yw1kr")]
+
+[node name="Area3D" type="Area3D" parent="." unique_id=1420876594]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1753738204]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7436981, 0)
+shape = SubResource("CylinderShape3D_yw1kr")
+
+[node name="Timer" type="Timer" parent="." unique_id=1761991700]
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

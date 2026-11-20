@@ -1,0 +1,130 @@
+[gd_scene format=3 uid="uid://cl643shidp0"]
+
+[ext_resource type="Script" uid="uid://rn5wovo73lch" path="res://entities/scripts/radio_tower.gd" id="1_ycm05"]
+[ext_resource type="Texture2D" uid="uid://bjmvv07kkttlf" path="res://entities/textures/radio_tower.png" id="2_xefhc"]
+[ext_resource type="ArrayMesh" uid="uid://bnkewe0g6x01a" path="res://entities/models/radio_tower.obj" id="3_tgxxh"]
+[ext_resource type="FontFile" uid="uid://ctnq3byjs61ix" path="res://game/textures/PublicPixel.woff" id="4_xefhc"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_i8tdi"]
+radius = 0.25048828
+height = 2.046875
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8pej4"]
+albedo_texture = ExtResource("2_xefhc")
+texture_filter = 0
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_i8tdi"]
+viewport_path = NodePath("Progress/SubViewport")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ud7q0"]
+bg_color = Color(0, 0, 0, 0.5019608)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_akc7v"]
+bg_color = Color(2.5990605e-06, 0.66730386, 0.80631137, 1)
+
+[node name="radio_tower" type="Node3D" unique_id=1105668686]
+script = ExtResource("1_ycm05")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=968387737 groups=["tower"]]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1768564180]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0054681, 0)
+shape = SubResource("CapsuleShape3D_i8tdi")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D" unique_id=364618387]
+material_override = SubResource("StandardMaterial3D_8pej4")
+mesh = ExtResource("3_tgxxh")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=530538690]
+
+[node name="PopupMenu" type="PopupMenu" parent="CanvasLayer" unique_id=1191826373]
+oversampling_override = 1.0
+theme_override_fonts/font = ExtResource("4_xefhc")
+hide_on_item_selection = false
+hide_on_checkable_item_selection = false
+allow_search = false
+
+[node name="DistrictChoice" type="PopupMenu" parent="CanvasLayer" unique_id=823630197]
+oversampling_override = 1.0
+theme_override_fonts/font = ExtResource("4_xefhc")
+allow_search = false
+
+[node name="Note" type="Node3D" parent="CanvasLayer" unique_id=1143034938]
+
+[node name="NotePt1" type="ColorRect" parent="CanvasLayer/Note" unique_id=1008623136]
+visible = false
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 12.0
+offset_top = -321.0
+offset_right = 287.0
+offset_bottom = -301.0
+grow_vertical = 2
+color = Color(0.31695628, 0, 0.058525443, 1)
+
+[node name="NotePt2" type="Label" parent="CanvasLayer/Note" unique_id=236870886]
+visible = false
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 14.0
+offset_top = -319.0
+offset_right = 335.0
+offset_bottom = -302.0
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_xefhc")
+theme_override_font_sizes/font_size = 14
+text = "Please Start Protest First"
+
+[node name="Progress" type="Sprite3D" parent="." unique_id=78294104]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 2.2403286, 0)
+billboard = 1
+texture = SubResource("ViewportTexture_i8tdi")
+
+[node name="SubViewport" type="SubViewport" parent="Progress" unique_id=360592597]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(256, 256)
+render_target_update_mode = 4
+
+[node name="ProgressBar" type="ProgressBar" parent="Progress/SubViewport" unique_id=12227556]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -8.0
+offset_right = 64.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_ud7q0")
+theme_override_styles/fill = SubResource("StyleBoxFlat_akc7v")
+value = 50.0
+show_percentage = false
+
+[node name="Timer" type="Timer" parent="Progress" unique_id=2088267129]
+one_shot = true
+
+[node name="Timers" type="Node3D" parent="." unique_id=1943193466]
+
+[node name="PropagandaTimer" type="Timer" parent="Timers" unique_id=1506185592]
+one_shot = true
+
+[node name="NoteTimer" type="Timer" parent="Timers" unique_id=850309170]
+one_shot = true
+
+[node name="InterceptTimer" type="Timer" parent="Timers" unique_id=958144214]
+one_shot = true
+
+[connection signal="input_event" from="StaticBody3D" to="." method="_on_static_body_3d_input_event"]
+[connection signal="id_pressed" from="CanvasLayer/PopupMenu" to="." method="_on_popup_menu_id_pressed"]
+[connection signal="id_pressed" from="CanvasLayer/DistrictChoice" to="." method="_on_district_choice_id_pressed"]
+[connection signal="timeout" from="Progress/Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Timers/NoteTimer" to="." method="_on_note_timer_timeout"]
+[connection signal="timeout" from="Timers/InterceptTimer" to="." method="_on_intercept_timer_timeout"]

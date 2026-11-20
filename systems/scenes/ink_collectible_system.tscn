@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://bkymgav275g5n"]
+
+[ext_resource type="Script" uid="uid://cgm6tr3balrmd" path="res://systems/scripts/ink_collectible_system.gd" id="1_fg4ff"]
+
+[node name="InkCollectibleSystem" type="Node" unique_id=1925928496]
+script = ExtResource("1_fg4ff")

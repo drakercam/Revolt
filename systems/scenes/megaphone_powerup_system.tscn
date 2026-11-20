@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://bea7rmd4vxtg5"]
+
+[ext_resource type="Script" uid="uid://b5jsfr0lsnmu6" path="res://systems/scripts/megaphone_powerup_system.gd" id="1_nweot"]
+
+[node name="MegaphonePowerupSystem" type="Node" unique_id=957615886]
+script = ExtResource("1_nweot")

@@ -1,0 +1,86 @@
+[gd_scene format=3 uid="uid://dj3wasuksy16b"]
+
+[ext_resource type="Script" uid="uid://dwi2rfi0f12yu" path="res://game/scripts/ui.gd" id="1_w1yb7"]
+[ext_resource type="FontFile" uid="uid://ctnq3byjs61ix" path="res://game/textures/PublicPixel.woff" id="2_l7w4e"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l7w4e"]
+resource_local_to_scene = true
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a6bw7"]
+resource_local_to_scene = true
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+
+[node name="UI" type="Control" unique_id=286336272]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_w1yb7")
+
+[node name="ProgressBar" type="ProgressBar" parent="." unique_id=567311650]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -456.5
+offset_top = 18.0
+offset_right = 456.5
+offset_bottom = 63.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("2_l7w4e")
+theme_override_styles/background = SubResource("StyleBoxFlat_l7w4e")
+theme_override_styles/fill = SubResource("StyleBoxFlat_a6bw7")
+show_percentage = false
+
+[node name="Label" type="Label" parent="ProgressBar" unique_id=1683633406]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -56.0
+offset_top = 12.0
+offset_right = 58.0
+offset_bottom = 31.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("2_l7w4e")
+theme_override_font_sizes/font_size = 19
+text = "Morale"
+
+[node name="ProgressBar2" type="ProgressBar" parent="." unique_id=1377199340]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -376.0
+offset_top = 69.0
+offset_right = 391.0
+offset_bottom = 106.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("2_l7w4e")
+theme_override_styles/background = SubResource("StyleBoxFlat_l7w4e")
+theme_override_styles/fill = SubResource("StyleBoxFlat_a6bw7")
+show_percentage = false
+
+[node name="Label" type="Label" parent="ProgressBar2" unique_id=1136731410]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -76.5
+offset_top = 9.0
+offset_right = 75.5
+offset_bottom = 28.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("2_l7w4e")
+theme_override_font_sizes/font_size = 16
+text = "Buildings Destroyed"

@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://d1clymclhrrog"]
+
+[ext_resource type="Script" uid="uid://cjflq8teqxvwy" path="res://entities/scripts/protestor.gd" id="1_podjk"]
+[ext_resource type="PackedScene" uid="uid://dkvah5ugtrwo7" path="res://entities/animatedmodels/basic_protester.gltf" id="2_lt0yv"]
+[ext_resource type="Animation" uid="uid://6v6yvsamiy70" path="res://entities/animations/arrested_protester.res" id="3_2y8pd"]
+[ext_resource type="Animation" uid="uid://c1fxnnyldfs6s" path="res://entities/animations/move_protester.res" id="4_hkbmw"]
+[ext_resource type="Animation" uid="uid://clwxkhxwcppfy" path="res://entities/animations/protesting_protester.res" id="5_vq1mg"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_lt0yv"]
+radius = 0.17041016
+height = 0.75549316
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3jukv"]
+_data = {
+&"arrested_protester": ExtResource("3_2y8pd"),
+&"move_protester": ExtResource("4_hkbmw"),
+&"protesting_protester": ExtResource("5_vq1mg")
+}
+
+[node name="Protester" type="Node3D" unique_id=813311609]
+script = ExtResource("1_podjk")
+
+[node name="RigidBody3D" type="RigidBody3D" parent="." unique_id=869374826 groups=["protester"]]
+gravity_scale = 0.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D" unique_id=1339910005]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.36029053, 0)
+shape = SubResource("CapsuleShape3D_lt0yv")
+
+[node name="Model_Mesh" parent="RigidBody3D" unique_id=252357595 instance=ExtResource("2_lt0yv")]
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="RigidBody3D/Model_Mesh" unique_id=1801213366]
+libraries/protester = SubResource("AnimationLibrary_3jukv")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=420606919]
+avoidance_enabled = true
+
+[node name="AnimationTimer" type="Timer" parent="." unique_id=745238906]
+one_shot = true
+
+[connection signal="timeout" from="AnimationTimer" to="." method="_on_animation_timer_timeout"]

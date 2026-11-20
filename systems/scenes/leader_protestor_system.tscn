@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://4151h7h1syfx"]
+
+[ext_resource type="Script" uid="uid://dbecp7hew7gsk" path="res://systems/scripts/leader_protestor_system.gd" id="1_ncy8w"]
+
+[node name="LeaderProtestorSystem" type="Node" unique_id=85336409]
+script = ExtResource("1_ncy8w")

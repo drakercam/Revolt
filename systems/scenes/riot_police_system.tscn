@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://2nl3iqklbner"]
+
+[ext_resource type="Script" uid="uid://c7kye1jrukfnu" path="res://systems/scripts/riot_police_system.gd" id="1_gknkp"]
+
+[node name="RiotPoliceSystem" type="Node" unique_id=1640590157]
+script = ExtResource("1_gknkp")

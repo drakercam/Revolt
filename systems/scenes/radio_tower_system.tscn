@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://c5ijnxvse5vho"]
+
+[ext_resource type="Script" uid="uid://cva3wkf5sfqah" path="res://systems/scripts/radio_tower_system.gd" id="1_t4a6d"]
+
+[node name="RadioTowerSystem" type="Node" unique_id=143291464]
+script = ExtResource("1_t4a6d")

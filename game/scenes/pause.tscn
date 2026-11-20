@@ -1,0 +1,70 @@
+[gd_scene format=3 uid="uid://1vyovh3vjcd4"]
+
+[ext_resource type="Script" uid="uid://dmrqegjcis58o" path="res://game/scripts/pause.gd" id="1_rydc1"]
+[ext_resource type="FontFile" uid="uid://ctnq3byjs61ix" path="res://game/textures/PublicPixel.woff" id="2_rydc1"]
+
+[node name="Pause" type="Control" unique_id=1366306827]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_rydc1")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=775877105]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+color = Color(0.63529414, 0.49803922, 0.43137255, 0.5803922)
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=855530631]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -22.0
+offset_right = 20.0
+offset_bottom = 22.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=918958058]
+layout_mode = 2
+
+[node name="ResumeBtn" type="Button" parent="MarginContainer/VBoxContainer" unique_id=1913613977]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.901971, 0.8683458, 0.7187729, 1)
+theme_override_fonts/font = ExtResource("2_rydc1")
+theme_override_font_sizes/font_size = 30
+text = "Resume"
+
+[node name="RestartBtn" type="Button" parent="MarginContainer/VBoxContainer" unique_id=1434831943]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.901971, 0.8683458, 0.7187729, 1)
+theme_override_fonts/font = ExtResource("2_rydc1")
+theme_override_font_sizes/font_size = 30
+text = "Restart"
+
+[node name="MenuBtn" type="Button" parent="MarginContainer/VBoxContainer" unique_id=1430943752]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.901971, 0.8683458, 0.7187729, 1)
+theme_override_fonts/font = ExtResource("2_rydc1")
+theme_override_font_sizes/font_size = 30
+text = "Menu"
+
+[node name="QuitBtn" type="Button" parent="MarginContainer/VBoxContainer" unique_id=1659271900]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.901971, 0.8683458, 0.7187729, 1)
+theme_override_fonts/font = ExtResource("2_rydc1")
+theme_override_font_sizes/font_size = 30
+text = "Quit"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/ResumeBtn" to="." method="_on_resume_btn_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/RestartBtn" to="." method="_on_restart_btn_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/MenuBtn" to="." method="_on_menu_btn_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/QuitBtn" to="." method="_on_quit_btn_pressed"]
