@@ -1,7 +1,6 @@
 Revolt - Final Project Prototype
 
 Names: Cameron Drake & Emily Amos
-Student Number: 101325027 & 101311817
 Course: COMP4501A
 Engine: Godot 4.6
 
